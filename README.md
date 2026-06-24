@@ -1,29 +1,287 @@
-# FIFA World Cup 2026 Champion Prediction
+# FIFA World Cup 2026 Prediction System
 
-## Project Overview
+## Overview
 
-This project predicts the winner of the FIFA World Cup 2026 using
-Machine Learning and Monte Carlo Simulation.
+The FIFA World Cup 2026 Prediction System is a Data Mining / Machine learning project that predicts the outcomes of FIFA World Cup matches and estimates tournament-winning probabilities using Monte Carlo Simulation.
 
-The system is trained on historical international football match
-data and FIFA rankings. A match outcome prediction model is first
-developed and then used to simulate the entire World Cup tournament
-thousands of times.
+The project combines historical international football match data, FIFA rankings, ELO ratings, team form statistics, head-to-head records, and tournament context to build predictive models capable of forecasting match outcomes.
 
-The final output provides:
+The ultimate goal is to simulate the entire FIFA World Cup 2026 tournament thousands of times and estimate the probability of each team winning the competition.
 
-- Champion probability
-- Finalist probability
-- Semi-final probability
-- Group stage predictions
-- Interactive dashboard visualizations
-
----
 
 ## Objectives
 
-- Analyze historical football match data
-- Build machine learning models for match outcome prediction
-- Simulate the FIFA World Cup 2026 tournament
-- Estimate championship probabilities using Monte Carlo Simulation
-- Visualize results through a Streamlit dashboard
+- Predict football match outcomes:
+  - Home Win
+  - Draw
+  - Away Win
+
+- Analyze the impact of:
+  - FIFA Rankings
+  - ELO Ratings
+  - Team Form
+  - Goal Statistics
+  - Head-to-Head Records
+  - Tournament Importance
+
+- Compare multiple machine learning models:
+  - Logistic Regression
+  - Random Forest
+  - XGBoost
+
+- Simulate FIFA World Cup 2026 using Monte Carlo Simulation.
+
+- Build an interactive dashboard for visualizing predictions and tournament simulations.
+
+
+
+## Features
+
+### Team Strength Features
+
+- Home Team ELO Rating
+- Away Team ELO Rating
+- ELO Difference
+
+- Home FIFA Ranking
+- Away FIFA Ranking
+- FIFA Ranking Difference
+
+- Home FIFA Points
+- Away FIFA Points
+- FIFA Points Difference
+
+
+### Team Form Features
+
+Performance over the last 5 matches:
+
+- Home Team Form
+- Away Team Form
+- Form Difference
+
+
+
+### Goal Statistics Features
+
+Last 5 Matches:
+
+- Average Goals Scored
+- Average Goals Conceded
+
+For both teams:
+
+- Goals Scored Difference
+- Goals Conceded Difference
+
+
+### Match Context Features
+
+- Tournament Importance
+- Home Advantage
+- Neutral Venue Information
+
+
+### Head-to-Head Features
+
+Historical records between teams:
+
+- Home Team H2H Wins
+- Away Team H2H Wins
+- H2H Difference
+
+
+
+## Datasets
+
+### 1. International Football Results
+
+Historical international football matches.
+
+Dataset:
+
+https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017
+
+Used For:
+
+- Match Results
+- Goal Statistics
+- Head-to-Head Records
+- Team Form
+
+
+
+### 2. FIFA Men's Rankings
+
+Historical FIFA rankings dataset.
+
+Dataset:
+
+https://www.kaggle.com/datasets/cashncarry/fifaworldranking
+
+Used For:
+
+- FIFA Rankings
+- FIFA Points
+
+
+### 3. International Football ELO Ratings
+
+Historical ELO ratings dataset.
+
+Dataset:
+
+https://www.kaggle.com/datasets/saifalnimri/international-football-elo-ratings
+
+Used For:
+
+- Team Strength Evaluation
+- ELO Difference Features
+
+
+
+## Project Structure
+
+WORLDCUP-PREDICTOR
+ ┣ dashboards
+ ┣ data
+ ┃  ┣ processed
+ ┃  ┃  ┣ match_data
+ ┃  ┃  ┃  ┣ future_matches.csv
+ ┃  ┃  ┃  ┣ historical_fifa_matches.csv
+ ┃  ┃  ┃  ┣ historical_matches.csv
+ ┃  ┃  ┃  ┣ matches_with_elo_fifa.csv
+ ┃  ┃  ┃  ┣ matches_with_elo.csv
+ ┃  ┃  ┃  ┗ matches_with_form.csv
+ ┃  ┃  ┣ team_data
+ ┃  ┃  ┃  ┣ elo_ratings_cleaned.csv
+ ┃  ┃  ┃  ┣ fifa_yearly_rankings.csv
+ ┃  ┃  ┃  ┗ worldcup_teams.csv
+ ┃  ┃  ┗ training_data
+ ┃  ┃     ┗ final_training_dataset.csv (main training data)
+ ┃  ┣ raw
+ ┃  ┃  ┣ eloratings.csv
+ ┃  ┃  ┣ fifa_mens_rank.csv
+ ┃  ┃  ┗ results.csv
+ ┃  ┗ simulation
+ ┃     ┣ rf_result.png
+ ┃     ┗ xgb_result.png
+ ┣ models
+ ┃  ┣ rf_model.pkl
+ ┃  ┗ xgb_model.pkl
+ ┣ notebooks
+ ┃  ┣ data_processing
+ ┃  ┃  ┣ 01_data_exploration.ipynb
+ ┃  ┃  ┣ 02_fifa_exploration.ipynb
+ ┃  ┃  ┗ 03_elo_exploration.ipynb
+ ┃  ┣ features_modeling
+ ┃  ┃  ┣ 01_feature_engineering.ipynb
+ ┃  ┃  ┣ 02_elo_feature_engineering.ipynb
+ ┃  ┃  ┣ 03_fifa_feature_engineering.ipynb
+ ┃  ┃  ┣ 04_form_feature_engineering.ipynb
+ ┃  ┃  ┣ 05_goal_feature_engineering.ipynb
+ ┃  ┃  ┣ 06_tournament_importance_feature_engineering.ipynb
+ ┃  ┃  ┗ 07_head-to-head_feature_engineering.ipynb
+ ┃  ┗ model_training
+ ┃     ┗ logistic_regression.ipynb
+ ┣ src
+ ┃  ┗ scripts
+ ┃     ┣ data_utils.py
+ ┃     ┣ random_forest.py
+ ┃     ┗ xgboost_model.py
+ ┣ .gitignore
+ ┣ README.md
+ ┗ requirements.txt
+
+
+## Installation
+
+### Clone Repository
+
+```bash
+git https://github.com/Nishant-cmd/WorldCup-Predictor.git
+
+cd  WORLDCUP_PREDICTOR
+```
+
+### Create Virtual Environment
+
+Linux
+
+```bash
+python -m venv venv
+
+source venv/bin/activate
+```
+
+Windows
+
+```bash
+python -m venv venv
+
+venv\Scripts\activate
+
+
+
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+
+## Machine Learning Pipeline
+
+Raw Match Data
+        │
+        ▼
+Data Cleaning
+        │
+        ▼
+Feature Engineering
+        │
+        ▼
+Training Dataset
+        │
+        ▼
+Model Training
+        │
+        ▼
+Best Model Selection
+        │
+        ▼
+Monte Carlo Simulation
+        │
+        ▼
+World Cup Winner Probabilities
+        │
+        ▼
+Dashboard Visualization
+
+
+### Current Progress
+
+- [x] Data Collection
+- [x] Data Cleaning
+- [x] FIFA Ranking Integration
+- [x] ELO Rating Integration
+- [x] Team Form Features
+- [x] Goal Statistics Features
+- [x] Tournament Importance Features
+- [x] Head-to-Head Features
+- [x] Logistic Regression Model
+- [x] Random Forest Model
+- [x] XGBoost Model
+- [ ] Monte Carlo Simulation
+- [ ] Dashboard Development
+- [ ] Final World Cup Prediction
+
+
+## Future Improvements
+
+- Expected Goals (xG) Features
+- Player-Level Statistics
+- Injury Information
+- Hyperparameter Optimization
+- Live Match Prediction Dashboard
