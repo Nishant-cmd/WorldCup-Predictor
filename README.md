@@ -222,10 +222,6 @@ WORLDCUP-PREDICTOR
 * **README.md** – Project documentation.
 * **requirements.txt** – Python dependencies required to run the project.
 
-```
-```
-
-
 
 ## Installation
 
