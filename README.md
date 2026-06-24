@@ -142,56 +142,89 @@ Used For:
 
 ## Project Structure
 
+## Project Structure
+
+```text
 WORLDCUP-PREDICTOR
- ┣ dashboards
- ┣ data
- ┃  ┣ processed
- ┃  ┃  ┣ match_data
- ┃  ┃  ┃  ┣ future_matches.csv
- ┃  ┃  ┃  ┣ historical_fifa_matches.csv
- ┃  ┃  ┃  ┣ historical_matches.csv
- ┃  ┃  ┃  ┣ matches_with_elo_fifa.csv
- ┃  ┃  ┃  ┣ matches_with_elo.csv
- ┃  ┃  ┃  ┗ matches_with_form.csv
- ┃  ┃  ┣ team_data
- ┃  ┃  ┃  ┣ elo_ratings_cleaned.csv
- ┃  ┃  ┃  ┣ fifa_yearly_rankings.csv
- ┃  ┃  ┃  ┗ worldcup_teams.csv
- ┃  ┃  ┗ training_data
- ┃  ┃     ┗ final_training_dataset.csv (main training data)
- ┃  ┣ raw
- ┃  ┃  ┣ eloratings.csv
- ┃  ┃  ┣ fifa_mens_rank.csv
- ┃  ┃  ┗ results.csv
- ┃  ┗ simulation
- ┃     ┣ rf_result.png
- ┃     ┗ xgb_result.png
- ┣ models
- ┃  ┣ rf_model.pkl
- ┃  ┗ xgb_model.pkl
- ┣ notebooks
- ┃  ┣ data_processing
- ┃  ┃  ┣ 01_data_exploration.ipynb
- ┃  ┃  ┣ 02_fifa_exploration.ipynb
- ┃  ┃  ┗ 03_elo_exploration.ipynb
- ┃  ┣ features_modeling
- ┃  ┃  ┣ 01_feature_engineering.ipynb
- ┃  ┃  ┣ 02_elo_feature_engineering.ipynb
- ┃  ┃  ┣ 03_fifa_feature_engineering.ipynb
- ┃  ┃  ┣ 04_form_feature_engineering.ipynb
- ┃  ┃  ┣ 05_goal_feature_engineering.ipynb
- ┃  ┃  ┣ 06_tournament_importance_feature_engineering.ipynb
- ┃  ┃  ┗ 07_head-to-head_feature_engineering.ipynb
- ┃  ┗ model_training
- ┃     ┗ logistic_regression.ipynb
- ┣ src
- ┃  ┗ scripts
- ┃     ┣ data_utils.py
- ┃     ┣ random_forest.py
- ┃     ┗ xgboost_model.py
- ┣ .gitignore
- ┣ README.md
- ┗ requirements.txt
+│
+├── dashboard/
+│
+├── data/
+│   ├── raw/
+│   │   ├── results.csv
+│   │   ├── fifa_mens_rank.csv
+│   │   └── eloratings.csv
+│   │
+│   └── processed/
+│       ├── match_data/
+│       │   ├── future_matches.csv
+│       │   ├── historical_fifa_matches.csv
+│       │   ├── historical_matches.csv
+│       │   ├── matches_with_elo.csv
+│       │   ├── matches_with_elo_fifa.csv
+│       │   └── matches_with_form.csv
+│       │
+│       ├── team_data/
+│       │   ├── elo_ratings_cleaned.csv
+│       │   ├── fifa_yearly_rankings.csv
+│       │   └── worldcup_teams.csv
+│       │
+│       └── training_data/
+│           └── final_training_dataset.csv (main training dataset)
+│
+├── models/
+│   ├── rf_model.pkl
+│   └── xgb_model.pkl
+│
+├── notebooks/
+│   ├── data_processing/
+│   │   ├── 01_data_exploration.ipynb
+│   │   ├── 02_fifa_exploration.ipynb
+│   │   └── 03_elo_exploration.ipynb
+│   │
+│   ├── features_modeling/
+│   │   ├── 01_feature_engineering.ipynb
+│   │   ├── 02_elo_feature_engineering.ipynb
+│   │   ├── 03_fifa_feature_engineering.ipynb
+│   │   ├── 04_form_feature_engineering.ipynb
+│   │   ├── 05_goal_feature_engineering.ipynb
+│   │   ├── 06_tournament_importance_feature_engineering.ipynb
+│   │   └── 07_head-to-head_feature_engineering.ipynb
+│   │
+│   └── model_training/
+│
+├── outputs/
+│   └── simulation/
+│       ├── rf_result.png
+│       └── xgb_result.png
+│
+├── src/
+│   └── scripts/
+│       ├── data_utils.py
+│       ├── logistic_regression.py
+│       ├── random_forest.py
+│       └── xgboost_model.py
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
+
+### Directory Description
+
+* **dashboard/** – Dashboard and visualization components.
+* **data/raw/** – Original datasets collected from external sources.
+* **data/processed/** – Cleaned datasets and engineered features used for training.
+* **models/** – Serialized machine learning models (.pkl files).
+* **notebooks/** – Jupyter notebooks used for data exploration, feature engineering, and model development.
+* **outputs/** – Generated visualizations, simulation results, and evaluation plots.
+* **src/scripts/** – Reusable Python scripts for training and utility functions.
+* **README.md** – Project documentation.
+* **requirements.txt** – Python dependencies required to run the project.
+
+```
+```
+
 
 
 ## Installation
@@ -220,9 +253,9 @@ Windows
 python -m venv venv
 
 venv\Scripts\activate
+```
 
-
-
+---
 
 ### Install Dependencies
 
@@ -230,9 +263,11 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+---
 
 ## Machine Learning Pipeline
 
+```text
 Raw Match Data
         │
         ▼
@@ -258,7 +293,9 @@ World Cup Winner Probabilities
         │
         ▼
 Dashboard Visualization
+```
 
+---
 
 ### Current Progress
 
